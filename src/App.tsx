@@ -1,11 +1,12 @@
-import { Button, Container, CssBaseline, Typography } from "@mui/material";
+import "./app.css";
+import { Container, CssBaseline, Grid, Typography } from "@mui/material";
 import { ThemeProvider } from "@mui/material";
-import { useTheme } from "./theme";
+import { useTheme, DarkModeSwitch } from "./theme";
 
 function App() {
   let [theme, isDarkTheme, setIsDarkTheme] = useTheme();
 
-  function handleClick() {
+  function toggleTheme() {
     setIsDarkTheme(!isDarkTheme);
   }
 
@@ -13,11 +14,21 @@ function App() {
     <>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <Container>
-          <Typography variant="h1">Material UI is working</Typography>
-          <Button variant="contained" onClick={handleClick}>
-            {isDarkTheme ? "Light" : "Dark"} Mode
-          </Button>
+        <Container maxWidth="lg">
+          <Grid container justifyContent="space-between" mt={2}>
+            <Grid item xs={10}>
+              <Typography variant="h1">Material UI is working</Typography>
+            </Grid>
+            <Grid item xs={2}>
+              <DarkModeSwitch
+                isDarkTheme={isDarkTheme}
+                toggleTheme={toggleTheme}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <Typography variant="h6">With Light and Dark Themes</Typography>
+            </Grid>
+          </Grid>
         </Container>
       </ThemeProvider>
     </>
