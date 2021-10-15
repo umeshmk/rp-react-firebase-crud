@@ -1,5 +1,11 @@
 import "./app.css";
-import { Container, CssBaseline, Grid, Typography } from "@mui/material";
+import {
+  Button,
+  Container,
+  CssBaseline,
+  Grid,
+  Typography,
+} from "@mui/material";
 import { ThemeProvider } from "@mui/material";
 import { useTheme, DarkModeSwitch } from "./theme";
 
@@ -29,6 +35,7 @@ function App() {
               <Typography variant="h6">With Light and Dark Themes</Typography>
             </Grid>
           </Grid>
+          <Button variant="contained">click</Button>
         </Container>
       </ThemeProvider>
     </>

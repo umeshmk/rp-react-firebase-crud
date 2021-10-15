@@ -7,4 +7,11 @@ export const themeOptions: ThemeOptions = {
       fontSize: "8rem",
     },
   },
+  components: {
+    MuiButtonBase: {
+      defaultProps: {
+        disableRipple: true,
+      },
+    },
+  },
 };
