@@ -1,4 +1,4 @@
 body {
   /* for light dark mode */
-  transition: color 1s ease-in;
+  transition: color 0.5s ease-in;
 }
