@@ -8,7 +8,6 @@ async function getAll() {
   const list = snapshot.docs.map((doc) => doc.data());
   return list;
 }
-
 export const posts = {
   getAll,
 };

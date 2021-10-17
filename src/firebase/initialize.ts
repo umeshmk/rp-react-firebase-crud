@@ -1,14 +1,14 @@
-import { initializeApp } from "firebase/app";
+import { FirebaseOptions, initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore/lite";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBFTPWf_0SUe8gT_6GdVYoR1RhHiFIxGjg",
-  authDomain: "rp-react-query-crud.firebaseapp.com",
-  projectId: "rp-react-query-crud",
-  storageBucket: "rp-react-query-crud.appspot.com",
-  messagingSenderId: "349548232442",
-  appId: "1:349548232442:web:697448d56fceb8916a9343",
+  apiKey: import.meta.env.VITE_apiKey,
+  authDomain: import.meta.env.VITE_authDomain,
+  projectId: import.meta.env.VITE_projectId,
+  storageBucket: import.meta.env.VITE_storageBucket,
+  messagingSenderId: import.meta.env.VITE_messagingSenderId,
+  appId: import.meta.env.VITE_appId,
 };
 
-const firebaseApp = initializeApp(firebaseConfig);
+const firebaseApp = initializeApp(firebaseConfig as FirebaseOptions);
 export const firestore = getFirestore(firebaseApp);
