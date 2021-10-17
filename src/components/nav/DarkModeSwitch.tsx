@@ -1,4 +1,4 @@
-import { Box, Grid } from "@mui/material";
+import { Box } from "@mui/material";
 import Brightness3Icon from "@mui/icons-material/Brightness3";
 import WbSunnyIcon from "@mui/icons-material/WbSunny";
 

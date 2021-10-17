@@ -1,46 +1,38 @@
 import "./app.css";
-import { Container, CssBaseline, Grid, Typography } from "@mui/material";
+import { Container, CssBaseline, Grid } from "@mui/material";
 import { ThemeProvider } from "@mui/material";
-import { useTheme, DarkModeSwitch } from "./theme";
+import { useTheme } from "./theme";
 import Posts from "./components/Posts";
+import { Register, Login } from "./components/users";
+import { Nav, DarkModeSwitch } from "./components/nav";
 
 function App() {
-  let [theme, isDarkTheme, setIsDarkTheme] = useTheme();
-
-  function toggleTheme() {
-    setIsDarkTheme(!isDarkTheme);
-  }
+  let { theme, isDarkTheme, toggleTheme } = useTheme();
 
   return (
     <>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <>
-          <Grid container justifyContent="space-between" p={5}>
-            <Grid item xs={10}>
-              <Typography variant="h2">React Query CRUD</Typography>
+        <Nav
+          darkModeSwitch={
+            <DarkModeSwitch
+              isDarkTheme={isDarkTheme}
+              toggleTheme={toggleTheme}
+            />
+          }
+        />
+        <Container maxWidth="lg">
+          <Grid container justifyContent="center" my={5}>
+            <Grid item xs={12} md={4}>
+              <Register />
             </Grid>
-            <Grid item container xs={2} justifyContent="end">
-              <DarkModeSwitch
-                isDarkTheme={isDarkTheme}
-                toggleTheme={toggleTheme}
-              />
+            <Grid item xs={12} md={4}>
+              <Login />
             </Grid>
-            <Grid item xs={12}>
-              <Typography variant="subtitle1" color="primary.dark">
-                With Light & Dark Mode
-              </Typography>
-              <Typography variant="subtitle1" color="primary.dark">
-                With Firebase
-              </Typography>
-              <Typography variant="subtitle1" color="primary.dark">
-                With Material UI
-              </Typography>
+            <Grid item xs={12} md={12}>
+              <Posts />
             </Grid>
           </Grid>
-        </>
-        <Container maxWidth="lg">
-          <Posts />
         </Container>
       </ThemeProvider>
     </>
