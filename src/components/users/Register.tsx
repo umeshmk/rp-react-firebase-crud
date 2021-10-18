@@ -1,14 +1,16 @@
 import { Box } from "@mui/material";
-import { Form, Fields } from "./Form";
+import { auth } from "../../firebase";
+import { UserEmailAndPassword } from "../../types";
+import { Form } from "./Form";
 
 export function Register() {
-  const onRegister = ({ email, password }: Fields) => {
-    console.log(email, password);
+  const handleClick = ({ email, password }: UserEmailAndPassword) => {
+    auth.register({ email, password });
   };
 
   return (
     <Box>
-      <Form afterSubmit={onRegister} onSubmitLabel="Register" />
+      <Form afterSubmit={handleClick} onSubmitLabel="Register" />
     </Box>
   );
 }

@@ -1,14 +1,16 @@
 import { Box } from "@mui/material";
-import { Form, Fields } from "./Form";
+import { auth } from "../../firebase";
+import { UserEmailAndPassword } from "../../types";
+import { Form } from "./Form";
 
 export function Login() {
-  const onLogin = ({ email, password }: Fields) => {
-    console.log(email, password);
+  const handleClick = ({ email, password }: UserEmailAndPassword) => {
+    auth.loginUser({ email, password });
   };
 
   return (
     <Box>
-      <Form afterSubmit={onLogin} onSubmitLabel="Login" />
+      <Form afterSubmit={handleClick} onSubmitLabel="Login" />
     </Box>
   );
 }

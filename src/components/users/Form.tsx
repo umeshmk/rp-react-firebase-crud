@@ -1,19 +1,34 @@
 import { Box, Button, Grid, TextField } from "@mui/material";
-import { ChangeEventHandler, FormEventHandler, useState } from "react";
-
-export type Fields = { email: string; password: string };
+import {
+  ChangeEventHandler,
+  FormEventHandler,
+  useEffect,
+  useState,
+} from "react";
+import { UserEmailAndPassword } from "../../types";
+import { useValidation } from "../../utility";
 
 interface IProps {
-  afterSubmit: (x: Fields) => void;
-  onSubmitLabel: string;
+  afterSubmit: (x: UserEmailAndPassword) => void;
+  onSubmitLabel: "Register" | "Login";
 }
 
 export function Form({ afterSubmit, onSubmitLabel }: IProps) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isFormValid, setIsFormValid] = useState(false);
+
+  const isEmailValid = useValidation("email", email);
+  const isPasswordValid = useValidation("password", password);
+
+  useEffect(() => {
+    email && password && isEmailValid && isPasswordValid
+      ? setIsFormValid(true)
+      : setIsFormValid(false);
+  });
 
   const handleChange: ChangeEventHandler<HTMLInputElement> = (e) => {
-    let el = e.target;
+    const el = e.target;
     if (el.id === "Email") setEmail(el.value);
     if (el.id === "Password") setPassword(el.value);
   };
@@ -22,7 +37,7 @@ export function Form({ afterSubmit, onSubmitLabel }: IProps) {
     e.preventDefault();
 
     // register or login
-    afterSubmit({ email, password });
+    isFormValid ? afterSubmit({ email, password }) : null;
   };
 
   return (
@@ -41,6 +56,10 @@ export function Form({ afterSubmit, onSubmitLabel }: IProps) {
             id="Email"
             value={email}
             onChange={handleChange}
+            error={email ? !isEmailValid : false}
+            helperText={
+              email && !isEmailValid ? "Invalid email eddress." : false
+            }
           />
         </Grid>
         <Grid item xs={12}>
@@ -51,10 +70,19 @@ export function Form({ afterSubmit, onSubmitLabel }: IProps) {
             id="Password"
             value={password}
             onChange={handleChange}
+            error={password ? !isPasswordValid : false}
+            helperText={
+              password && !isPasswordValid ? "Invalid password" : false
+            }
           />
         </Grid>
         <Grid item xs={12} mt={2}>
-          <Button fullWidth type="submit" variant="outlined">
+          <Button
+            fullWidth
+            type="submit"
+            variant="outlined"
+            disabled={!isFormValid}
+          >
             {onSubmitLabel}
           </Button>
         </Grid>
