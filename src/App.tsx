@@ -1,9 +1,8 @@
+import { Box, CssBaseline, ThemeProvider } from "@mui/material";
 import "./app.css";
-import { Container, CssBaseline, Grid } from "@mui/material";
-import { ThemeProvider } from "@mui/material";
-import { useTheme } from "./theme";
+import { DarkModeSwitch, Nav } from "./components/nav";
 import { User } from "./components/users";
-import { Nav, DarkModeSwitch } from "./components/nav";
+import { useTheme } from "./theme";
 
 function App() {
   let { theme, isDarkTheme, toggleTheme } = useTheme();
@@ -20,9 +19,9 @@ function App() {
             />
           }
         />
-        <Container maxWidth="lg">
+        <Box p={2}>
           <User />
-        </Container>
+        </Box>
       </ThemeProvider>
     </>
   );

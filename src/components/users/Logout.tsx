@@ -8,7 +8,7 @@ export function Logout() {
 
   return (
     <Box>
-      <Button variant="outlined" onClick={handleClick}>
+      <Button variant="outlined" color="error" onClick={handleClick}>
         Logout
       </Button>
     </Box>

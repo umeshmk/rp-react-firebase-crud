@@ -1,10 +1,11 @@
 import { Button, ButtonGroup, Grid } from "@mui/material";
-import Posts from "../Posts";
+import { useState } from "react";
+import ReactLoading from "react-loading";
+import { auth } from "../../firebase";
+import { Posts } from "../posts";
 import { CurrentUser } from "./CurrentUser";
 import { Login } from "./Login";
 import { Register } from "./Register";
-import { auth } from "../../firebase";
-import { useState } from "react";
 
 type SelectOption = "login" | "register";
 
@@ -36,19 +37,34 @@ export function User() {
   return (
     <>
       <Grid container justifyContent="center" my={5}>
-        <Grid item xs={12} my={2} textAlign="center">
-          <CurrentUser loginStatus={loginStatus} currentUser={currentUser} />
-        </Grid>
-        <Grid item xs={12} md={12} textAlign="center" my={2}>
-          {loginStatus === false && selected}
-        </Grid>
-        <Grid item xs={12} md={4}>
-          {!loginStatus && !isLoginSelected && <Register />}
-          {!loginStatus && isLoginSelected && <Login />}
-        </Grid>
-        <Grid item xs={12} md={12}>
-          {loginStatus === true && <Posts />}
-        </Grid>
+        {loginStatus === "checking" && (
+          <ReactLoading type="spin" color="#333" height={50} width={50} />
+        )}
+
+        {!loginStatus && (
+          <>
+            <Grid item xs={12} textAlign="center" my={2}>
+              {selected}
+            </Grid>
+            <Grid item xs={12} md={4}>
+              {!isLoginSelected && <Register />}
+              {isLoginSelected && <Login />}
+            </Grid>
+          </>
+        )}
+        {loginStatus === true && (
+          <>
+            <Grid item xs={12} mb={10} textAlign="center">
+              <CurrentUser
+                loginStatus={loginStatus}
+                currentUser={currentUser}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <Posts />
+            </Grid>
+          </>
+        )}
       </Grid>
     </>
   );
