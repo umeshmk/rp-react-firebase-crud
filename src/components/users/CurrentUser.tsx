@@ -1,6 +1,7 @@
 import { Box, Typography } from "@mui/material";
 import { CurrentUserType, LoginStatus } from "../../types";
 import { Logout } from "./Logout";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
 interface IProps {
   currentUser: CurrentUserType;
@@ -9,10 +10,16 @@ interface IProps {
 
 export function CurrentUser({ currentUser, loginStatus }: IProps) {
   return (
-    <Box display="inline-block">
+    <Box
+      p={8}
+      sx={{
+        backgroundColor: "background.paper",
+      }}
+    >
       {loginStatus === true && (
-        <Box>
-          <Typography variant="h6" fontFamily="monospace" color="primary">
+        <Box display="inline-block">
+          <AccountCircleIcon fontSize="large" />
+          <Typography variant="h6" fontFamily="monospace" color="secondary">
             [ {currentUser?.email} ]
           </Typography>
           <Box mt={3}>

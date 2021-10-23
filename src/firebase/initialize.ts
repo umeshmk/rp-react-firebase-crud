@@ -1,7 +1,8 @@
 import { FirebaseOptions, initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore/lite";
 import { getAuth } from "firebase/auth";
+import { getFirestore } from "firebase/firestore/lite";
 
+// initialize app
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_apiKey,
   authDomain: import.meta.env.VITE_authDomain,
@@ -12,5 +13,10 @@ const firebaseConfig = {
 };
 
 const firebaseApp = initializeApp(firebaseConfig as FirebaseOptions);
-export const firestore = getFirestore(firebaseApp);
+
+// authentication
 export const auth = getAuth(firebaseApp);
+
+// firestore
+export const firestore = getFirestore(firebaseApp);
+export const collectionName = "rp-react-query-crud";

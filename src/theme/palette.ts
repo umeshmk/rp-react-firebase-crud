@@ -1,19 +1,15 @@
 import { ThemeOptions } from "@mui/material";
-import {
-  blue,
-  cyan,
-  green,
-  grey,
-  pink,
-  purple,
-  red,
-} from "@mui/material/colors";
+import { grey, lightBlue, pink, purple } from "@mui/material/colors";
 
 let light: ThemeOptions = {
   palette: {
-    primary: blue,
-    secondary: cyan,
+    primary: pink,
+    secondary: lightBlue,
     divider: purple[200],
+    background: {
+      default: "#fff",
+      paper: pink[50],
+    },
     text: {
       primary: grey[900],
       secondary: grey[600],
@@ -24,12 +20,12 @@ let light: ThemeOptions = {
 let dark: ThemeOptions = {
   palette: {
     mode: "dark",
-    primary: blue,
-    secondary: cyan,
+    primary: pink,
+    secondary: lightBlue,
     divider: grey[700],
     background: {
       default: grey[900],
-      paper: grey[900],
+      paper: grey[800],
     },
     text: {
       primary: grey[200],

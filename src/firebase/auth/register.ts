@@ -1,16 +1,23 @@
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { UserEmailAndPassword } from "../../types";
+import { CurrentUserType, UserEmailAndPassword } from "../../types";
 import { auth } from "../initialize";
 
-export function registerUser({ email, password }: UserEmailAndPassword) {
-  createUserWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      // Signed in
-      const user = userCredential.user;
-      console.log("User status : Registered");
-    })
-    .catch((error) => {
-      console.log("xxxx Register error xxxx");
-      console.log(error);
-    });
-}
+type RegisterUser = ({
+  email,
+  password,
+}: UserEmailAndPassword) => Promise<CurrentUserType>;
+
+export const registerUser: RegisterUser = async function ({ email, password }) {
+  try {
+    let userCredential = await createUserWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
+    console.log("User status : Registered");
+    return userCredential.user;
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+};

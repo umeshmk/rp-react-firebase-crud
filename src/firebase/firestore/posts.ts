@@ -1,33 +1,47 @@
-import { addDoc, collection, getDocs } from "firebase/firestore/lite";
-import { v4 as uuidv4 } from "uuid";
-import { Post } from "../../types";
-import { firestore } from "../initialize";
+// single doc size limit - 1 MB
 
-const postsCollection = collection(firestore, "posts");
+import { getDoc, setDoc } from "firebase/firestore/lite";
+import { Post, UserDocument } from "../../types";
+import { userDocRef } from "./user";
 
-const getAll = async () => {
+// types
+type Get = () => Promise<Post[]>;
+type Update = (posts: Post[]) => Promise<boolean>;
+
+// get all posts in user's document
+const get: Get = async () => {
+  let docRef = userDocRef();
+  if (!docRef) return null;
+
   try {
-    const snapshot = await getDocs(postsCollection);
-    const list = snapshot.docs.map((doc) => doc.data());
-    return list;
+    // # fetch single doc
+    let docSnap = await getDoc(docRef);
+    return docSnap.data()?.posts;
   } catch (e) {
-    console.error("Error fetching Posts", e);
+    console.error(e);
   }
 };
 
-const create = async (post: Omit<Post, "id">) => {
+// create/update single post in user document.posts array
+const update: Update = async (posts) => {
+  let docRef = userDocRef();
+  if (!docRef) return false;
+
   try {
-    const docRef = await addDoc(postsCollection, {
-      ...post,
-      id: uuidv4(),
-    });
-    console.log("New Post created - DocumentID: ", docRef.id);
+    let userDoc = await getDoc(docRef);
+    let docData: UserDocument = {
+      ...(userDoc.data() as UserDocument),
+      posts,
+    };
+    await setDoc(docRef, docData);
+    return true;
   } catch (e) {
-    console.error("Error adding Post: ", e);
+    console.error(e);
+    return false;
   }
 };
 
 export const posts = {
-  getAll,
-  create,
+  get,
+  update,
 };

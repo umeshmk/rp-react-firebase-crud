@@ -30,29 +30,6 @@ export const Pages = () => {
 
   return (
     <>
-      {/* <nav>
-        <ul>
-          <li>
-            <Link to="/">/</Link>
-          </li>
-          <li>
-            <Link to="/create">Create</Link>
-          </li>
-          <li>
-            <Link to="/edit">Edit</Link>
-          </li>
-          <li>
-            <Link to="/login">Login</Link>
-          </li>
-          <li>
-            <Link to="/404">404 error</Link>
-          </li>
-          <li>
-            <Link to="/random">Random</Link>
-          </li>
-        </ul>
-      </nav> */}
-
       <Switch>
         <Route exact path="/login">
           {!loggedIn ? <LoginPage /> : <Redirect to="/" />}

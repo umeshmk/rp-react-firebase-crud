@@ -1,7 +1,7 @@
 import { Grid } from "@mui/material";
 import ReactLoading from "react-loading";
 import { auth } from "../../firebase";
-import { Posts } from "../posts";
+import { PostList } from "../posts";
 import { CurrentUser } from "./CurrentUser";
 
 export function User() {
@@ -23,7 +23,7 @@ export function User() {
               />
             </Grid>
             <Grid item xs={12}>
-              <Posts />
+              <PostList />
             </Grid>
           </>
         )}

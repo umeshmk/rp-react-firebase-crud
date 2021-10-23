@@ -1,12 +1,13 @@
 import { Box } from "@mui/material";
-import { auth } from "../../firebase";
+import { auth, db } from "../../firebase";
 import { UserEmailAndPassword } from "../../types";
 import { Form } from "./Form";
 
 export function Register() {
-  const handleClick = ({ email, password }: UserEmailAndPassword) => {
-    auth.register({ email, password });
-  };
+  async function handleClick({ email, password }: UserEmailAndPassword) {
+    let user = await auth.register({ email, password });
+    if (user) db.user.createNewDoc();
+  }
 
   return (
     <Box>

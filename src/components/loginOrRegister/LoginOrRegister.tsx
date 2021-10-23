@@ -11,7 +11,7 @@ export function LoginOrRegister() {
   const isLoginSelected = loginOrRegister === "login";
 
   const selected = (
-    <ButtonGroup variant="text">
+    <ButtonGroup variant="text" color="secondary">
       <Button
         href=""
         onClick={() => setLoginOrRegister("login")}
