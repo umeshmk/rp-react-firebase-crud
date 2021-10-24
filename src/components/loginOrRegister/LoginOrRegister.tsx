@@ -1,4 +1,4 @@
-import { Button, ButtonGroup, Grid } from "@mui/material";
+import { Box, Button, Grid, Typography } from "@mui/material";
 import { useState } from "react";
 import { Login } from "./Login";
 import { Register } from "./Register";
@@ -11,22 +11,35 @@ export function LoginOrRegister() {
   const isLoginSelected = loginOrRegister === "login";
 
   const selected = (
-    <ButtonGroup variant="text" color="secondary">
+    <>
+      {/* maybe there is a little bug in button group. It affects buttons outside too.  */}
+      {/* <ButtonGroup variant="text" color="secondary"> */}
       <Button
-        href=""
+        // href=""
         onClick={() => setLoginOrRegister("login")}
         disabled={isLoginSelected}
       >
         Login
       </Button>
+
+      <Box
+        display="inline-block"
+        fontSize="large"
+        borderLeft={1}
+        borderColor="text.secondary"
+      >
+        &nbsp;
+      </Box>
+
       <Button
-        href=""
+        // href=""
         onClick={() => setLoginOrRegister("register")}
         disabled={!isLoginSelected}
       >
         Register
       </Button>
-    </ButtonGroup>
+      {/* </ButtonGroup> */}
+    </>
   );
 
   return (
@@ -37,6 +50,14 @@ export function LoginOrRegister() {
         </Grid>
         <Grid item xs={12} md={4}>
           {isLoginSelected ? <Login /> : <Register />}
+        </Grid>
+        <Grid item xs={12} textAlign="center" p={3}>
+          Guest Login
+          <Typography variant="body2" color="text.secondary">
+            user1@gmail.com
+            <br />
+            123456
+          </Typography>
         </Grid>
       </Grid>
     </>

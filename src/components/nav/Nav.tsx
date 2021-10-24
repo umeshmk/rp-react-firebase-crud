@@ -1,4 +1,4 @@
-import { Box, Button, ButtonGroup, Grid, Typography } from "@mui/material";
+import { Button, ButtonGroup, Grid, Typography } from "@mui/material";
 
 interface IProps {
   darkModeSwitch: JSX.Element;
@@ -17,7 +17,7 @@ export function Nav({ darkModeSwitch }: IProps) {
       <Grid container justifyContent="space-between" p={5}>
         <Grid item xs={8}>
           <Typography variant="h2" color="primary">
-            React Query CRUD
+            React CRUD
           </Typography>
         </Grid>
 
@@ -31,32 +31,22 @@ export function Nav({ darkModeSwitch }: IProps) {
           alignItems="center"
           // spacing={3}
         >
-          <Box display="inline-block" pr={3}>
+          {/* <Box display="inline-block" pr={3}>
             {links}
-          </Box>
-          {/* {links} */}
-          {/* <ul>
-            <li>
-              <Link to="/">/</Link>
-            </li>
-            <li>
-              <Link to="/random">Random</Link>
-            </li>
-          </ul> */}
-          {/* <Grid item xs={1} textAlign="right">
-        </Grid> */}
+          </Box> */}
           {darkModeSwitch}
         </Grid>
         <Grid item xs={12} fontStyle="italic">
-          <Typography variant="body2" color="text.primary">
-            With Light & Dark Mode
-          </Typography>
-          <Typography variant="body2" color="text.primary">
-            With Firebase
-          </Typography>
-          <Typography variant="body2" color="text.primary">
-            With Material UI
-          </Typography>
+          {[
+            "With Light & Dark Mode",
+            "With Firebase",
+            "With Material UI",
+            "With Typescript",
+          ].map((text) => (
+            <Typography variant="body2" color="text.primary" key={text}>
+              {text}
+            </Typography>
+          ))}
         </Grid>
       </Grid>
     </nav>

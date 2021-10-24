@@ -1,8 +1,8 @@
-import { Box, CssBaseline, ThemeProvider } from "@mui/material";
+import { CssBaseline, ThemeProvider } from "@mui/material";
 import { BrowserRouter } from "react-router-dom";
 import "./app.css";
+import Footer from "./components/Footer";
 import { DarkModeSwitch, Nav } from "./components/nav";
-import { User } from "./components/users";
 import { Pages } from "./pages";
 import { useTheme } from "./theme";
 
@@ -23,7 +23,7 @@ function App() {
             }
           />
           <Pages />
-          <Box p={2}>{/* <User /> */}</Box>
+          <Footer />
         </BrowserRouter>
       </ThemeProvider>
     </>
