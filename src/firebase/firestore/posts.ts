@@ -1,6 +1,6 @@
 // single doc size limit - 1 MB
 
-import { getDoc, setDoc } from "firebase/firestore/lite";
+import { getDoc, setDoc, Timestamp } from "firebase/firestore/lite";
 import { Post, UserDocument } from "../../types";
 import { userDocRef } from "./user";
 
@@ -31,6 +31,7 @@ const update: Update = async (posts) => {
     let userDoc = await getDoc(docRef);
     let docData: UserDocument = {
       ...(userDoc.data() as UserDocument),
+      lastUpdatedAt: Timestamp.now(),
       posts,
     };
     await setDoc(docRef, docData);
