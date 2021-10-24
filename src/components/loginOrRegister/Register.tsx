@@ -6,7 +6,7 @@ import { Form } from "./Form";
 export function Register() {
   async function handleClick({ email, password }: UserEmailAndPassword) {
     let user = await auth.register({ email, password });
-    if (user) db.user.createNewDoc();
+    if (user?.email) await db.user.createNewDoc(user.email);
   }
 
   return (
