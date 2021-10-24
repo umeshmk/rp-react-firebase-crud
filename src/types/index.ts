@@ -1,5 +1,5 @@
 import { User } from "@firebase/auth";
-import { Timestamp } from "@firebase/firestore/dist/lite";
+import { FieldValue } from "firebase/firestore/lite";
 
 export type Post = {
   id: string;
@@ -11,8 +11,8 @@ export type UserDocument = {
   id: string; // uid
   email: string; // emailid
   posts: Post[];
-  createdAt: Timestamp;
-  lastUpdatedAt: Timestamp;
+  createdAt: FieldValue;
+  lastUpdatedAt: FieldValue;
 };
 
 export type LoginStatus = "checking" | true | false;

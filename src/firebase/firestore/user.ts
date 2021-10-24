@@ -2,8 +2,8 @@ import {
   doc,
   DocumentData,
   DocumentReference,
+  serverTimestamp,
   setDoc,
-  Timestamp,
 } from "firebase/firestore/lite";
 import { v4 as uuidv4 } from "uuid";
 import { UserDocument } from "../../types";
@@ -28,8 +28,8 @@ const createNewDoc: CreateNewDoc = async (email) => {
   let docData: UserDocument = {
     id: docRef.id, // is uid of authenticated user
     email: email,
-    createdAt: Timestamp.now(),
-    lastUpdatedAt: Timestamp.now(),
+    createdAt: serverTimestamp(),
+    lastUpdatedAt: serverTimestamp(),
     posts: [
       {
         id: uuidv4().substring(0, 13),
