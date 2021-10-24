@@ -1,5 +1,6 @@
 import { onAuthStateChanged } from "firebase/auth";
 import { useEffect, useState } from "react";
+
 import { CurrentUserType, LoginStatus } from "../../types";
 import { auth } from "../initialize";
 
