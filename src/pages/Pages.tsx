@@ -1,41 +1,33 @@
-import { Grid } from "@mui/material";
-import ReactLoading from "react-loading";
 import { Redirect, Route, Switch } from "react-router-dom";
 import { auth } from "../firebase";
+import { LoadingIcon } from "../utility";
 import { CreatePage } from "./CreatePage";
 import { EditPage } from "./EditPage";
 import { HomePage } from "./HomePage";
 import { LoginPage } from "./LoginPage";
+import { LogoutPage } from "./LogoutPage";
 
 export const Pages = () => {
-  const { currentUser, loginStatus } = auth.useAuthObserver();
+  const { loginStatus } = auth.useAuthObserver();
   const loggedIn = loginStatus === true;
 
-  const loading = loginStatus === "checking" && (
-    <Grid
-      container
-      direction="column"
-      spacing={5}
-      justifyContent="center"
-      alignContent="center"
-      height="500px"
-    >
-      <Grid item>
-        <ReactLoading type="spin" color="#333" height={50} width={50} />
-      </Grid>
-    </Grid>
-  );
-
-  if (loading) return loading;
+  if (loginStatus === "checking") return <LoadingIcon />;
 
   return (
     <>
       <Switch>
         <Route exact path="/login">
-          {!loggedIn ? <LoginPage /> : <Redirect to="/" />}
+          {!loggedIn ? <LoginPage option="login" /> : <Redirect to="/" />}
+        </Route>
+        <Route exact path="/register">
+          {!loggedIn ? <LoginPage option="register" /> : <Redirect to="/" />}
+        </Route>
+        <Route exact path="/logout">
+          <LogoutPage />
         </Route>
 
         {!loggedIn && <Redirect to="/login" />}
+
         <Route exact path="/">
           <HomePage />
         </Route>

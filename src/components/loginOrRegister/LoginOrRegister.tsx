@@ -1,24 +1,21 @@
 import { Box, Button, Grid, Typography } from "@mui/material";
-import { useState } from "react";
+import { Link } from "react-router-dom";
+import { LoginOrRegisterOption } from "../../types";
 import { Login } from "./Login";
 import { Register } from "./Register";
 
-type SelectOption = "login" | "register";
+interface IProps {
+  option: LoginOrRegisterOption;
+}
 
-export function LoginOrRegister() {
-  const [loginOrRegister, setLoginOrRegister] = useState<SelectOption>("login");
-
-  const isLoginSelected = loginOrRegister === "login";
+export function LoginOrRegister({ option }: IProps) {
+  const isLogin = option === "login";
 
   const selected = (
     <>
       {/* maybe there is a little bug in button group. It affects buttons outside too.  */}
       {/* <ButtonGroup variant="text" color="secondary"> */}
-      <Button
-        // href=""
-        onClick={() => setLoginOrRegister("login")}
-        disabled={isLoginSelected}
-      >
+      <Button component={Link} to="/login" disabled={isLogin}>
         Login
       </Button>
 
@@ -31,11 +28,7 @@ export function LoginOrRegister() {
         &nbsp;
       </Box>
 
-      <Button
-        // href=""
-        onClick={() => setLoginOrRegister("register")}
-        disabled={!isLoginSelected}
-      >
+      <Button component={Link} to="/register" disabled={!isLogin}>
         Register
       </Button>
       {/* </ButtonGroup> */}
@@ -49,7 +42,7 @@ export function LoginOrRegister() {
           {selected}
         </Grid>
         <Grid item xs={12} md={4}>
-          {isLoginSelected ? <Login /> : <Register />}
+          {isLogin ? <Login /> : <Register />}
         </Grid>
         <Grid item xs={12} textAlign="center" p={3}>
           Guest Login

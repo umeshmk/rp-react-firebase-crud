@@ -15,6 +15,7 @@ export type UserDocument = {
   lastUpdatedAt: FieldValue;
 };
 
+export type LoginOrRegisterOption = "login" | "register";
 export type LoginStatus = "checking" | true | false;
 export type CurrentUserType = User | null;
 
