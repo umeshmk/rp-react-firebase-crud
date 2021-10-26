@@ -1,6 +1,8 @@
 import { Alert, Snackbar } from "@mui/material";
 import { useEffect, useState } from "react";
 
+// A Notification popup in bottom left corner of screen
+
 // same msg in different {} will still trigger notification
 // eg: wrong pass multiple times text msg is same always
 

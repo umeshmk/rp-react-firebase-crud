@@ -2,6 +2,8 @@ import { useEffect, useRef, useState } from "react";
 import { db } from "../../firebase";
 import { Post } from "../../types";
 
+// Hook - create / update / remove post in postlist array
+
 export const usePosts = () => {
   const [postList, setPostList] = useState<Post[]>([]);
   const isMounted = useRef(true);

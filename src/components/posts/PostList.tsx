@@ -5,6 +5,8 @@ import { CreatePost } from "./CreatePost";
 import { Post as PostComponent } from "./Post";
 import { usePosts } from "./usePosts";
 
+// Show postlist & create new Post form
+
 export const PostList = () => {
   const { postList, handleCreate, handleRemove, handleUpdate } = usePosts();
   const [isInEditMode, setIsInEditMode] = useState<null | Post>();

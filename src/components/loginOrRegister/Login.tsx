@@ -5,6 +5,8 @@ import { UserEmailAndPassword } from "../../types";
 import { Notification } from "../../utility";
 import { Form } from "./Form";
 
+// Login form
+
 export function Login() {
   const [error, setError] = useState({ msg: "" });
 

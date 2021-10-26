@@ -6,8 +6,8 @@ interface IProps {
   option: LoginOrRegisterOption;
 }
 
-// Login page which is also Landing page if not auth
-export const LoginPage = ({ option }: IProps) => {
+// Login/Register page which is also Landing page if not auth
+export const LoginOrRegisterPage = ({ option }: IProps) => {
   useTitleEffect(option === "login" ? "Login" : "Register");
 
   return (

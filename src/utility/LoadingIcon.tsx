@@ -1,6 +1,7 @@
 import { Grid } from "@mui/material";
 import ReactLoading from "react-loading";
 
+// A simple loading icon
 export function LoadingIcon() {
   return (
     <Grid

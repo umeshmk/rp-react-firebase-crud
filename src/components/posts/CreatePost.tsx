@@ -11,6 +11,8 @@ interface IProps {
   handleUpdate: (post: Post) => Promise<void>;
 }
 
+// create / edit single post
+
 export function CreatePost({ editPost, handleCreate, handleUpdate }: IProps) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");

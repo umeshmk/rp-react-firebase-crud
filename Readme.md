@@ -6,15 +6,12 @@
 
 ### Features
 
-A simple project to create posts using
+A Full stack single page application to create posts using
 
 - Typescript
-- React
-- Firebase [client sdk] (Authentication, Firestore, Hosting)
-- Material UI
+- React (v17)
+- Firebase (Javasript client sdk v9) (Authentication, Firestore, Hosting)
+- Material UI (v55)
 - Dark & Light Mode Themes
 - React router
 - Vite.js
-
-\
-8### Firebase using REST APIs with react query

@@ -1,6 +1,7 @@
 import { ThemeOptions } from "@mui/material";
 import { grey, lightBlue, pink, purple } from "@mui/material/colors";
 
+// light theme
 let light: ThemeOptions = {
   palette: {
     primary: pink,
@@ -17,6 +18,7 @@ let light: ThemeOptions = {
   },
 };
 
+// dark theme
 let dark: ThemeOptions = {
   palette: {
     mode: "dark",

@@ -4,6 +4,8 @@ import isLength from "validator/es/lib/isLength";
 
 type Types = "email" | "password";
 
+// check validation for register & login forms
+
 export function useValidation(type: Types, value: string) {
   const [isValid, setIsValid] = useState(false);
 

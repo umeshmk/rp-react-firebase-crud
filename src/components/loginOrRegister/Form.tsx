@@ -13,6 +13,9 @@ interface IProps {
   onSubmitLabel: "Register" | "Login";
 }
 
+// a form with username & password fields
+// Use in login & register both
+
 export function Form({ afterSubmit, onSubmitLabel }: IProps) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

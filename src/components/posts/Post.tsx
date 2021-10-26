@@ -9,6 +9,8 @@ interface IProps {
   handleRemove: (postId: string) => void;
 }
 
+// Single Post UI
+
 export const Post = ({ post, handleEditMode, handleRemove }: IProps) => {
   const { id, title, description } = post;
 

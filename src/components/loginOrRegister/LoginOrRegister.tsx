@@ -8,6 +8,8 @@ interface IProps {
   option: LoginOrRegisterOption;
 }
 
+// show or hide login / register form based on which button user clicks
+
 export function LoginOrRegister({ option }: IProps) {
   const isLogin = option === "login";
 
