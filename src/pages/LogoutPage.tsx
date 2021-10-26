@@ -17,7 +17,7 @@ export function LogoutPage() {
   }, []);
 
   return (
-    <Box textAlign="center" p={20}>
+    <Box textAlign="center" p={{ xs: 10, lg: 20 }}>
       {loading && <LoadingIcon />}
       "You are successfully Logged out."
       <Box>

@@ -8,8 +8,8 @@ interface IProps {
 export function Nav({ darkModeSwitch }: IProps) {
   return (
     <nav>
-      <Grid container justifyContent="space-between" p={5}>
-        <Grid item xs={8}>
+      <Grid container justifyContent="space-between" p={{ xs: 1, lg: 5 }}>
+        <Grid item xs md={8}>
           <Typography variant="h2" color="primary">
             React CRUD
           </Typography>
@@ -17,17 +17,15 @@ export function Nav({ darkModeSwitch }: IProps) {
 
         <Grid
           item
-          container
-          xs={4}
+          textAlign="end"
+          xs
           md={3}
-          textAlign="right"
-          justifyContent="end"
-          alignItems="center"
-          // spacing={3}
+          alignContent="space-between"
+          justifyContent="flex-end"
+          pt={2}
         >
-          <CurrentUser />
-
           {darkModeSwitch}
+          <CurrentUser />
         </Grid>
         <Grid item xs={12} fontStyle="italic">
           {[

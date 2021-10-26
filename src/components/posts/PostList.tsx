@@ -1,4 +1,4 @@
-import { Grid } from "@mui/material";
+import { Grid, Typography } from "@mui/material";
 import { useState } from "react";
 import { Post } from "../../types";
 import { CreatePost } from "./CreatePost";
@@ -25,10 +25,12 @@ export const PostList = () => {
         item
         xs={12}
         lg={6}
-        borderRight={3}
-        p={4}
+        borderRight={{ xs: 0, lg: 4 }}
+        p={{ xs: 0, lg: 4 }}
         sx={{
-          borderColor: "primary.light",
+          "&": {
+            borderColor: "primary.light",
+          },
         }}
       >
         <CreatePost
@@ -38,7 +40,10 @@ export const PostList = () => {
           handleUpdate={handleUpdate}
         />
       </Grid>
-      <Grid item container xs={12} lg={6} p={4}>
+      <Grid item container xs={12} lg={6} p={{ xs: 1, lg: 4 }}>
+        <Typography variant="h4" color="primary.dark" py={3}>
+          # Posts
+        </Typography>
         {postList.map((post) => (
           <PostComponent
             post={post}

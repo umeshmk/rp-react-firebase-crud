@@ -33,7 +33,7 @@ export const Post = ({
         borderColor: "primary.main",
         "&:hover .MuiBox-root": {
           display: "block",
-          "&:hover": {
+          "& *:hover": {
             color: "red",
             cursor: "pointer",
           },
@@ -48,21 +48,16 @@ export const Post = ({
         display="none"
         position="absolute"
         top="0"
-        right="30px"
-        m={2}
-        onClick={() => handleEditMode(post)}
-      >
-        <EditIcon fontSize="small" />
-      </Box>
-      <Box
-        display="none"
-        position="absolute"
-        top="0"
         right="0"
-        m={2}
-        onClick={() => handleRemove(id)}
+        p={1}
+        color="primary"
+        sx={{
+          backgroundColor: "background.default",
+        }}
       >
-        <DeleteIcon fontSize="small" />
+        <EditIcon fontSize="small" onClick={() => handleEditMode(post)} />
+        &nbsp; &nbsp;
+        <DeleteIcon fontSize="small" onClick={() => handleRemove(id)} />
       </Box>
 
       <Typography

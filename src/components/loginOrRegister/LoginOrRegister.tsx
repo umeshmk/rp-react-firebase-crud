@@ -39,11 +39,11 @@ export function LoginOrRegister({ option }: IProps) {
 
   return (
     <>
-      <Grid container justifyContent="center">
+      <Grid container justifyContent="center" pt={{ xs: 5, lg: 0 }}>
         <Grid item xs={12} textAlign="center" my={2}>
           {selected}
         </Grid>
-        <Grid item xs={12} md={4}>
+        <Grid item xs={12} md={4} p={2}>
           {isLogin ? <Login /> : <Register />}
         </Grid>
         <Grid item xs={12} textAlign="center" p={3}>
