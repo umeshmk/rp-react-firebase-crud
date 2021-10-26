@@ -20,7 +20,7 @@ export default function Footer() {
         <Grid item>
           <Button
             variant="text"
-            href="https://github.com/umeshmk/rp-react-firebase-materialui-crud"
+            href="https://github.com/umeshmk/rp-react-firebase-crud"
             color="primary"
           >
             Github
