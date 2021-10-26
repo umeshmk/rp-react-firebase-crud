@@ -15,6 +15,10 @@ export const PostList = () => {
     setIsInEditMode(post);
   };
 
+  const handleStopEditMode = () => {
+    setIsInEditMode(null);
+  };
+
   return (
     <Grid container justifyContent="space-between" p={3}>
       <Grid
@@ -29,6 +33,7 @@ export const PostList = () => {
       >
         <CreatePost
           editPost={isInEditMode}
+          handleStopEditMode={handleStopEditMode}
           handleCreate={handleCreate}
           handleUpdate={handleUpdate}
         />
@@ -37,6 +42,7 @@ export const PostList = () => {
         {postList.map((post) => (
           <PostComponent
             post={post}
+            inEditMode={post.id === isInEditMode?.id}
             handleEditMode={() => handleEditMode(post)}
             handleRemove={handleRemove}
             key={post.id}

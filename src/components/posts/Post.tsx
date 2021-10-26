@@ -5,13 +5,19 @@ import { Post as PostType } from "../../types";
 
 interface IProps {
   post: PostType;
+  inEditMode: boolean;
   handleEditMode: (post: PostType) => void;
   handleRemove: (postId: string) => void;
 }
 
 // Single Post UI
 
-export const Post = ({ post, handleEditMode, handleRemove }: IProps) => {
+export const Post = ({
+  post,
+  inEditMode,
+  handleEditMode,
+  handleRemove,
+}: IProps) => {
   const { id, title, description } = post;
 
   return (
@@ -23,7 +29,7 @@ export const Post = ({ post, handleEditMode, handleRemove }: IProps) => {
       p={2}
       mt={2}
       sx={{
-        // backgroundColor: "background.paper",
+        backgroundColor: inEditMode ? "background.paper" : null,
         borderColor: "primary.main",
         "&:hover .MuiBox-root": {
           display: "block",

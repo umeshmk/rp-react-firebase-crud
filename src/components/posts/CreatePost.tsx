@@ -7,13 +7,19 @@ import { Post } from "../../types";
 
 interface IProps {
   editPost?: Post | null;
+  handleStopEditMode: () => void;
   handleCreate: (post: Post) => Promise<void>;
   handleUpdate: (post: Post) => Promise<void>;
 }
 
 // create / edit single post
 
-export function CreatePost({ editPost, handleCreate, handleUpdate }: IProps) {
+export function CreatePost({
+  editPost,
+  handleStopEditMode,
+  handleCreate,
+  handleUpdate,
+}: IProps) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
 
@@ -21,6 +27,9 @@ export function CreatePost({ editPost, handleCreate, handleUpdate }: IProps) {
     if (editPost) {
       setTitle(editPost.title);
       setDescription(editPost.description);
+    } else {
+      setTitle("");
+      setDescription("");
     }
   }, [editPost]);
 
@@ -59,7 +68,11 @@ export function CreatePost({ editPost, handleCreate, handleUpdate }: IProps) {
         {!editPost ? "# Create New Post" : "# Edit Post"}
         {editPost && (
           <Typography variant="body1" color="text.secondary">
-            {editPost.id}
+            Post id - {editPost.id}
+            &nbsp; &nbsp; &nbsp;
+            <Button color="primary" onClick={handleStopEditMode}>
+              Stop Editing
+            </Button>
           </Typography>
         )}
       </Typography>
