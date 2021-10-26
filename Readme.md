@@ -1,17 +1,15 @@
 # React Project
 
-> rp-react-firebase-materialui-crud
+**Full stack single page application to create posts with Authentication.**
 
-[https://github-umeshmk.web.app](https://github-umeshmk.web.app)
+[https://rp-react-firebase-crud.web.app](https://rp-react-firebase-crud.web.app)
 
 ### Features
 
-A Full stack single page application to create posts using
-
 - Typescript
 - React (v17)
-- Firebase (Javasript client sdk v9) (Authentication, Firestore, Hosting)
-- Material UI (v55)
+- Firebase (Javasript client sdk v9) - _Authentication, Firestore, Hosting_
+- Material UI (v5)
 - Dark & Light Mode Themes
 - React router
 - Vite.js
